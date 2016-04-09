@@ -12,9 +12,12 @@ public class NoteCreator : MonoBehaviour
 
     public IEnumerator CreateNote()
     {
-        //Debug.Log(Time.realtimeSinceStartup);
-        //var positionNew = transform.position;
-        Instantiate(notePrefab, transform.position, transform.rotation);
+        var shouldInstantiate = Random.Range(0, 1) == 0;
+        if (shouldInstantiate)
+        {
+            var note = Instantiate(notePrefab, transform.position, transform.rotation) as GameObject;
+        }
+
         yield return null;
     }
 

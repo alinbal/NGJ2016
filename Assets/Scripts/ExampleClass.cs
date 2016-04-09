@@ -59,9 +59,10 @@ public class ExampleClass : MonoBehaviour
                     amp *= 2.0F;
                 }
 
-                UnityMainThreadDispatcher.Instance().Enqueue(_noteCreators[rand.Next(0,_noteCreators.Count)].CreateNote());
-                //_noteCreators[0].CreateNote();
-                //Debug.Log("Tick: " + accent + "/" + signatureHi);
+                if (!GameController.instance.isGameOver)
+                {
+                    UnityMainThreadDispatcher.Instance().Enqueue(_noteCreators[rand.Next(0, _noteCreators.Count)].CreateNote());
+                }   
             }
             phase += amp * 0.3F;
             amp *= 0.993F;

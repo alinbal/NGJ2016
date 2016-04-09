@@ -35,6 +35,7 @@ public class PianoNoteTarget : MonoBehaviour
         {
             Destroy(_currentNote.gameObject);
             clickSource.PlayOneShot(audioClick);
+            GameController.instance.score++;
         }
     }
 }

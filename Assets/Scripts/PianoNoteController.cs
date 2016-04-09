@@ -1,15 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class PianoNoteController : MonoBehaviour
 {
+    public List<float> sppeds = new List<float>();
     public float speed = 0;
     private bool _isClickable = false;
 
     // Use this for initialization
     void Start()
     {
-
+        speed = sppeds[Random.Range(0, 1)];
+        speed += speed * GameController.instance.speedMultiplier;
     }
 
     // Update is called once per frame
@@ -21,7 +24,8 @@ public class PianoNoteController : MonoBehaviour
         if (transform.position.y < -6)
         {
             Destroy(this.gameObject);
-
+            GameController.instance.BreakMultiplier();
+            GameController.instance.hp -= 15;
             //Debug.Log(Screen.height + "" + screenPosition);
             //Debug.Break();
         }
