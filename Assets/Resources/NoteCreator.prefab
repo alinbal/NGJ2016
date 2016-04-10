@@ -23,7 +23,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 173918}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 6, z: 0}
+  m_LocalPosition: {x: -.267776042, y: 3.64830947, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -40,8 +40,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   notePrefab: {fileID: 157528, guid: 0bcd765f6f6f67148afd2c56623fec33, type: 2}
+  notePrefabBomb: {fileID: 157528, guid: f522ae7e370ab024594ea10d427e86ca, type: 2}
+  notePrefabLife: {fileID: 157528, guid: 3da11ba810ff8a747913c29a0e4d746c, type: 2}
   targetTimeMin: 1
-  targetTimeMax: 3
+  targetTimeMax: 1
+  _chanceLife: .150000006
+  _chanceBomb: .550000012
+  _changeCreateSpecialNote: .349999994
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

@@ -9,6 +9,10 @@ public class GameController : MonoBehaviour
     UILabel _multiplierLabel;
     [SerializeField]
     UILabel _hpLabel;
+    [SerializeField]
+    UILabel _endScreenScore;
+    [SerializeField]
+    HUDText _multiplierHUDText;
     private int _score = 0;
     private int _hp = 100;
     [SerializeField]
@@ -28,6 +32,7 @@ public class GameController : MonoBehaviour
             {
                 //stop game
                 _endOverlay.SetActive(true);
+                _endScreenScore.text = "" + _score;
                 isGameOver = true;
             }
         }
@@ -53,7 +58,7 @@ public class GameController : MonoBehaviour
             }
             
             _scoreLabel.text = _score + "";
-            if (currentStreak > 15)
+            if (currentStreak > 5)
             {
                 currentStreak = 0;
                 IncreaseMultiplier();
@@ -68,7 +73,7 @@ public class GameController : MonoBehaviour
 
     public bool isGameOver = false;
 
-    public int multiplier = 1;
+    public int multiplier = 0;
     private int currentStreak;
 
     public AudioSource audioSource;
@@ -85,8 +90,12 @@ public class GameController : MonoBehaviour
     //Break the multiplier
     public void BreakMultiplier()
     {
-        multiplier = 1;
+        multiplier = 0;
         _multiplierLabel.text = multiplier + "x";
+        if (currentStreak > 0)
+        {
+            _multiplierHUDText.Add("Lost Multiplier", Color.red, 0.6f);
+        }
         currentStreak = 0;
     }
 
@@ -94,6 +103,8 @@ public class GameController : MonoBehaviour
     {
         multiplier += 10;
         _multiplierLabel.text = multiplier + "x";
+
+        _multiplierHUDText.Add(multiplier + "x Multiplier",Color.yellow,0.6f);
     }
 
     void Awake()

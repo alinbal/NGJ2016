@@ -4,6 +4,14 @@ using System.Collections.Generic;
 
 public class PianoNoteController : MonoBehaviour
 {
+    public enum NoteType
+    {
+        Regular,
+        Bomb,
+        Life
+    }
+
+    public NoteType noteType;
     public List<float> sppeds = new List<float>();
     public float speed = 0;
     private bool _isClickable = false;
@@ -24,10 +32,12 @@ public class PianoNoteController : MonoBehaviour
         if (transform.position.y < -6)
         {
             Destroy(this.gameObject);
-            GameController.instance.BreakMultiplier();
-            GameController.instance.hp -= 15;
-            //Debug.Log(Screen.height + "" + screenPosition);
-            //Debug.Break();
+            
+            if (noteType == NoteType.Regular)
+            {
+                GameController.instance.hp -= 15;
+                GameController.instance.BreakMultiplier();
+            }
         }
             
 
@@ -49,6 +59,4 @@ public class PianoNoteController : MonoBehaviour
             //Destroy(this.gameObject);
         }
     }
-
-
 }
